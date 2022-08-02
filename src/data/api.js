@@ -66,3 +66,13 @@ export const getServiceByServiceId = async (ServiceId) => {
         console.log('error-getServiceByServiceId ');
     }
 }
+
+//meeting
+export const createMeeting = async (meeting) => {
+    try {
+        return await axios.post('https://meetings-test.herokuapp.com/meeting', meeting);
+    }
+    catch (error) {
+        console.log('error-createMeeting');
+    }
+}

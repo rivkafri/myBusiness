@@ -19,12 +19,9 @@ function App() {
         <Context>
           <Routes>
             <Route path="" element={<Menu />} />
-            <Route path="/Customer" element={<Customer />}>
-              {/* <Route path=":serviceId" element={<Service />} > */}
-              <Route path=":newMeeting" element={<Meeting />} >
-              </Route>
-            </Route>
-            <Route path="/Admin" element={<Admin />}></Route>
+            <Route path="/Customer" element={<Customer />}/>
+            <Route path="/newMeeting/:id" element={<Meeting />} />
+            <Route path="/Admin" element={<Admin />}/>
             <Route path="/Login" element={<Login />}>
             </Route>
             {/* <Route path="/Login" element={<Business />} /> */}
