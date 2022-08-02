@@ -9,8 +9,16 @@ import { getBusinessByUserId } from './data/api';
 //   expect(linkElement).toBeInTheDocument();
 // });
 
-test('getBusinessByUserId', () => {
-  const result = getBusinessByUserId('cadc7a4a-e6b6-4174-9d70-13571fa2d16d');
+// tests  that we write
+//1
+test('getBusinessByUserId-check the typeof the answer',async () => {
+  const result =await getBusinessByUserId('fb590aef-b2e0-4354-9feb-425b279dbcfb');
   expect(typeof result).toEqual(typeof Object());
+});
+//2
+test('getBusinessByUserId-check if the answer is correct', async () => {
+  const data = await getBusinessByUserId('fb590aef-b2e0-4354-9feb-425b279dbcfb');
+  console.log(data);
+  expect(data.phone).toEqual("089791234")
 });
 

@@ -1,6 +1,6 @@
 import axios from 'axios';
-const userId='cadc7a4a-e6b6-4174-9d70-13571fa2d16d';
-const BusinessId='2772e844-739b-4dd6-8507-d07575bc7db6';
+const userId = 'fb590aef-b2e0-4354-9feb-425b279dbcfb';
+const BusinessId = 'da10f87a-c055-4d04-96a0-796c1d33f009';
 
 //business
 export const getBusinessByUserId = async (userId) => {
@@ -62,6 +62,7 @@ export const getServicesByBusinessId = async (BusinessId) => {
 export const getServiceByServiceId = async (ServiceId) => {
     try {
         const { service } = await axios.get(`https://meetings-test.herokuapp.com/service/${ServiceId}`);
+        console.log(service);
         return service;
     }
     catch (error) {

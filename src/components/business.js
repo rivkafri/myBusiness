@@ -10,7 +10,7 @@ export const Business = () => {
     const [phone, setPhone] = useState(business.phone);
     console.log(nameBusiness + " " + phone);
 
-    const save = (e) => {
+    const save = async (e) => {
         e.preventDefault();
         const updates = {
             "business": {
@@ -20,10 +20,9 @@ export const Business = () => {
         }
         console.log(updates);
         try {
-            updateBusiness(business.id, updates).then((updatedBusiness) => {
-                console.log(updatedBusiness);
-                setBusiness(updatedBusiness);
-            });
+            const updatedBusiness = await updateBusiness(business.id, updates);
+            console.log(updatedBusiness);
+            setBusiness(updatedBusiness);
         } catch (err) {
             console.log(err);
         }

@@ -11,7 +11,7 @@ export const BusinessContext = (props) => {
 
     const getBusiness = () => {
         try {
-            getBusinessByUserId('cadc7a4a-e6b6-4174-9d70-13571fa2d16d').then((business) => {
+            getBusinessByUserId('fb590aef-b2e0-4354-9feb-425b279dbcfb').then((business) => {
                 console.log(business);
                 setBusiness(business);
             });

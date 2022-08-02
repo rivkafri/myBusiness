@@ -14,7 +14,7 @@ export const ServicesContext = (props) => {
 
     const getAllServices = () => {
         try {
-            getBusinessByUserId('cadc7a4a-e6b6-4174-9d70-13571fa2d16d').then((business) => {
+            getBusinessByUserId('fb590aef-b2e0-4354-9feb-425b279dbcfb').then((business) => {
                 console.log(business);
                 getServicesByBusinessId(business.id).then((services) => {
                     console.log(services);
