@@ -9,25 +9,28 @@ import { Admin } from "./components/admin";
 import { Services } from "./components/services";
 import { Business } from "./components/business";
 import { Meetings } from "./components/meetings";
-import { Context } from "./data/context";
-
+import { ServicesContext } from "./data/services.context";
+import { BusinessContext } from './data/business.context';
 
 function App() {
   return (
     <div className="App">
       <div>
-        <Context>
-          <Routes>
-            <Route path="" element={<Menu />} />
-            <Route path="/Customer" element={<Customer />}/>
-            <Route path="/newMeeting/:id" element={<Meeting />} />
-            <Route path="/Admin" element={<Admin />}/>
-            <Route path="/Login" element={<Login />}>
-            </Route>
-            {/* <Route path="/Login" element={<Business />} /> */}
-            <Route path="*" element={<h1> Ooops!!<br></br> your addres is'nt valid, check it and try again! </h1>} />
-          </Routes>
-        </Context>
+        <ServicesContext>
+          <BusinessContext>
+            <Routes>
+              <Route path="" element={<Menu />} />
+              <Route path="/Customer" element={<Customer />}/>
+              <Route path="/newMeeting/:id" element={<Meeting />} />
+              <Route path="/Login" element={<Login />} />
+              <Route path="/Admin" element={<Admin />} />
+              <Route path="/Business" element={<Business />} />
+              <Route path="/Services" element={<Services />} />
+              <Route path="/Meetings" element={<Meetings />} />
+              <Route path="*" element={<h1> Ooops!!<br></br> your address is'nt valid, check it and try again! </h1>} />
+            </Routes>
+          </BusinessContext>
+        </ServicesContext>
       </div>
     </div >
   );

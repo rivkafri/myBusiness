@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useContext, useRef } from 'react';
-import { useParams, useNavigate, Link } from 'react-router-dom';
-import { context } from '../data/context';
 import '../css/customer.css';
+import { context } from '../data/services.context';
 
 import { makeStyles } from '@material-ui/core/styles';
 import ImageList from '@material-ui/core/ImageList';
@@ -37,13 +36,16 @@ export const Customer = () => {
     
     const navigateToMeeting = useNavigate();
     const classes = useStyles();
-    const services = useContext(context);
+    const [services,setServices] = useContext(context);
+
     console.log("customer");
     console.log(services);
     return (
         <div className={classes.root}>
             <ImageList rowHeight={180} className={classes.imageList}>
+
                 <ImageListItem key="Subheader" cols={2} style={{ height: 'auto' }} >
+
                     {/* <ListSubheader component="div">December</ListSubheader> */}
                 </ImageListItem>
                 {services.map((item) => (

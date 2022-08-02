@@ -6,8 +6,8 @@ export const Menu = () => {
     return (
         <nav>
             <ul>
-                <li><Link to="/Customer"> Customer </Link> </li>
-                <li><Link to="/Login"> Admin </Link> </li>
+                <li id="li"><Link to="/Customer"> Customer </Link> </li>
+                <li id="li"><Link to="/Login"> Admin </Link> </li>
             </ul>
         </nav>
     );
