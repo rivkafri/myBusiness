@@ -1,7 +1,7 @@
 import { React, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { createMeeting } from '../data/api';
-import { context } from '../data/context';
+import { context } from '../data/services.context';
 
 export const Meeting = () => {
     const { id } = useParams();
