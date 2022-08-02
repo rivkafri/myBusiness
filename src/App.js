@@ -20,10 +20,8 @@ function App() {
           <BusinessContext>
             <Routes>
               <Route path="" element={<Menu />} />
-              <Route path="/Customer" element={<Customer />}>
-                <Route path=":newMeeting" element={<Meeting />} >
-                </Route>
-              </Route>
+              <Route path="/Customer" element={<Customer />}/>
+              <Route path="/newMeeting/:id" element={<Meeting />} />
               <Route path="/Login" element={<Login />} />
               <Route path="/Admin" element={<Admin />} />
               <Route path="/Business" element={<Business />} />

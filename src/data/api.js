@@ -69,6 +69,17 @@ export const getServiceByServiceId = async (ServiceId) => {
     }
 }
 
+
+//meeting
+export const createMeeting = async (meeting) => {
+    try {
+        return await axios.post('https://meetings-test.herokuapp.com/meeting', meeting);
+    }
+    catch (error) {
+        console.log('error-createMeeting');
+    }
+}
+
 export const updateService = async (servicId, updates) => {
     try {
         const _service = await axios.put(`https://meetings-test.herokuapp.com/service/${servicId}`, updates);
@@ -105,5 +116,6 @@ export const addService = async (businessId, name, des) => {
         console.log('error - add task');
     }
 }
+
 
 
