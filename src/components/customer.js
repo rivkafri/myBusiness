@@ -26,44 +26,33 @@ const useStyles = makeStyles((theme) => ({
     icon: {
         color: 'rgba(255, 255, 255, 0.54)',
     },
-    link:{
+    link: {
         color: 'white',
-        textDecoration:'none',
+        textDecoration: 'none',
     }
 }));
 
 export const Customer = () => {
-    
+
     const navigateToMeeting = useNavigate();
     const classes = useStyles();
-    const [services,setServices] = useContext(context);
+    const [services, setServices] = useContext(context);
 
     console.log("customer");
     console.log(services);
     return (
         <div className={classes.root}>
             <ImageList rowHeight={180} className={classes.imageList}>
-
                 <ImageListItem key="Subheader" cols={2} style={{ height: 'auto' }} >
-
-                    {/* <ListSubheader component="div">December</ListSubheader> */}
                 </ImageListItem>
                 {services.map((item) => (
                     <ImageListItem key={item.id}>
                         <img src={image} alt={item.name} />
-                        <ImageListItemBar 
+                        <ImageListItemBar
                             name={<span> {item.name}</span>}
-                            //subtitle={<span> {item.name}</span>}
                             title={<span> {item.name}</span>}
-                            subtitle={<Link className={classes.link} to={`/newMeeting/${item.id}`}> make a meeting </Link> }
-                            // subtitle={<button onClick={navigateToMeeting(`/newMeeting/${item.id}`)}>make a meeting</button>}
-                            // actionIcon={
-                            //     <IconButton aria-label={`info about ${item.name}`} >
-                            //         <InfoIcon />
-                            //     </IconButton>
-                            // }
+                            subtitle={<Link className={classes.link} to={`/newMeeting/${item.id}`}> make a meeting </Link>}
                         />
-                        {/* <ImageListItemBar title={<span> {item.name}</span>}/> */}
                     </ImageListItem>
                 ))}
             </ImageList>

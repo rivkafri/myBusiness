@@ -12,7 +12,7 @@ export const Login = () => {
         event.preventDefault();
         if (userName && password) {
             try {
-                await login(userName, password).then((user) => {
+                login(userName, password).then((user) => {
                     console.log(user);
                     if (user.password === '12345')
                         navigate('/Admin');
