@@ -1,0 +1,21 @@
+body {
+    text-align: center;
+}
+
+#service {
+    background-image: linear-gradient(to right, pink, rgb(238, 205, 144));
+    border: 1px solid black;
+    border-radius: 20px;
+    width: 50%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+#add{
+    background-image: linear-gradient(to right, pink, rgb(238, 205, 144));
+    border-radius: 20px;
+    width: 20%;
+}
+
+#li {
+    list-style-type: none;
+}

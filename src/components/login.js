@@ -14,7 +14,7 @@ export const Login = () => {
             try {
                 await login(userName, password).then((user) => {
                     console.log(user);
-                    if (user.password === '123456')
+                    if (user.password === '12345')
                         navigate('/Admin');
                     else
                         navigate('/Customer');

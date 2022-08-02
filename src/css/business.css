@@ -1,0 +1,9 @@
+
+#business{
+    background-image: linear-gradient(to right, pink, rgb(238, 205, 144));
+    border: 1px solid black;
+    border-radius: 20px;
+    width: 50%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}

@@ -1,13 +1,11 @@
-import React, { useState, useEffect, createContext } from "react";
+import React, { useState, useEffect, createContext, useContext } from "react";
 import { getBusinessByUserId, getServicesByBusinessId } from "./api";
+// import { context1 } from './business.context';
 
 export const context = createContext([]);
 
-//servicesContext
-//businessContext
-//או קונטקסט אחד לכולם?
-
-export const Context = (props) => {
+export const ServicesContext = (props) => {
+    // const [business, setBusiness] = useContext(context1);
     const [services, setServices] = useState([]);
 
     useEffect(() => {
@@ -16,11 +14,12 @@ export const Context = (props) => {
 
     const getAllServices = () => {
         try {
-            getBusinessByUserId('e43d7cbe-58fb-46fb-b91e-54d1a6e0ed5e').then((business) => {
+            getBusinessByUserId('cadc7a4a-e6b6-4174-9d70-13571fa2d16d').then((business) => {
                 console.log(business);
                 getServicesByBusinessId(business.id).then((services) => {
                     console.log(services);
                     setServices([...services]);
+                    console.log(services);
                 });
             });
         } catch (err) {
@@ -28,7 +27,7 @@ export const Context = (props) => {
         }
     }
 
-    return <context.Provider value={services}>
+    return <context.Provider value={[services,setServices]}>
         {props.children}
     </context.Provider>
 }

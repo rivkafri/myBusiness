@@ -1,67 +1,71 @@
-import React, { useEffect, useState, useContext, useRef } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-// import { useRecoilState, useSetRecoilState } from 'recoil';
-import { getServiceByServiceId } from '../data/api';
+import { context } from '../data/services.context';
+import { context1 } from '../data/business.context';
+import { updateService, deleteService } from '../data/api';
+import '../css/services.css';
 
 export const Services = () => {
-    const { serviceId } = useParams();
-    console.log(serviceId);
-    const navigate = useNavigate();
-    const [service, SetService] = useState({});
-    // useEffect(() => {
-    //     if (!task) {
-    //         console.log('no tasks');
-    //         navigate('/tasks');  // דוגמא לניווט ע"י קוד
-    //     }
-    //     else {
-    //         setName(task.name);
-    //         setDone(task.done);
-    //     }
-    // }, [taskId, task]);
-    // useEffect(() => {
-    //     console.log('run after every state or prop change');
-    // });
-    useEffect(() => {
-        console.log('call once at the first render');
+    const [business, setBusiness] = useContext(context1);
+    const [services, setServices] = useContext(context);
+    console.log(services);
+    const [name, setName] = useState("");
+    const [descreption, setDescreption] = useState("");
 
-    }, []);
-    const getService = async () => {
+    const save = async (id) => {
+        console.log(id);
+        const updates = {
+            "service": {
+                "businessId": business.id,
+                "name": name,
+                "descreption": descreption
+            }
+        }
+        console.log(updates);
         try {
-            await getServiceByServiceId(serviceId).then((serviceDetails) => {
-                console.log(serviceDetails);
-
-            });
+            const data = await updateService(id, updates);
+            setServices(data);
         } catch (err) {
             console.log(err);
         }
     }
 
-    const save = async (event) => {
-        console.log("save");
-        // event.preventDefault();
-        // const newTask =
-        // {
-        //     id,
-        //     name,
-        //     done,
-        // };
-        // console.log(newTask);
-
-        // await UpdateTask(id, newTask).then(()=>{
-        //     loadTasks().then((data)=>{
-        //       setTasks([...data]);  
-        //     });
-        //    });
-
-        // navigate('/tasks');
+    const editService = (s) => {
+        setName(s.name);
+        setDescreption(s.descreption);
+        const nameInput = document.getElementById('name');
+        nameInput.removeAttribute('readonly');
+        const desInput = document.getElementById('des');
+        desInput.removeAttribute('readonly');
     }
 
-    return service ?
-        <div>
-            <h4>{service.id}</h4><br />
-            <h4>{service.name}</h4><br />
-            <h3>{service.service}</h3><br />
-            <button> <Link to="newMeeting">Add New Meeting</Link></button>
-        </div> : ' ';
+    const deleteOneService = async (id) => {
+        console.log(id);
+        try {
+            const data = await deleteService(id);
+            setServices(data);
+        } catch (err) {
+            console.log(err);
+        }
+    }
 
+    return (
+        <div>
+            <ul>
+                {services.map((s) => (
+                    <li id="li" key={s.id} >
+                        <div id="service">
+                            <input type="text" required id="name" name="name" readonly="readonly" defaultValue={s.name} onChange={e => setName(e.target.value)} /> <br />
+                            <input type="text" required id="des" name="des" readonly="readonly" defaultValue={s.descreption} onChange={e => setDescreption(e.target.value)} /> <br />
+                            <button type="button" onClick={e => deleteOneService(s.id)}>Delete</button>
+                            <button type="button" onClick={e => editService(s)}>Edit</button>
+                            <button type="button" onClick={e => save(s.id)}>Save</button>
+                        </div>
+                        <br />
+                    </li>
+                ))}
+            </ul>
+            <button type="button" id="add" >Add</button>
+        </div >
+    );
 }
